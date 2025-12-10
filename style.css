@@ -1,0 +1,635 @@
+/* =========================================
+   1. CSS VARIABLES & THEME SETUP
+   ========================================= */
+:root {
+    /* --- Core Brand Colors --- */
+    --primary-color: #3ea6ff;
+    --secondary-color: #6c757d;
+
+    /* --- LIGHT MODE (Default) --- */
+    --bg-main: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-darker: #1a1a2e;
+    
+    --text-main: #333333;
+    --text-muted: #666666;
+    --text-inverted: #f4f4f4;
+
+    --card-bg: #ffffff;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --shadow-color: rgba(0,0,0,0.1);
+    --border-color: #ddd;
+
+    /* --- Hero Section Specifics --- */
+    --hero-text-bg: rgba(255, 255, 255, 0.9); 
+
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --nav-height: 70px;
+}
+
+/* --- DARK MODE OVERRIDES --- */
+body.dark-mode {
+    --bg-main: #121212;
+    --bg-secondary: #1e1e2d;
+    /* --bg-darker stays the same for footer */
+
+    --text-main: #e4e6eb;
+    --text-muted: #b0b3b8;
+
+    --card-bg: #242526;
+    --nav-bg: rgba(36, 37, 38, 0.95);
+    --shadow-color: rgba(0,0,0,0.4);
+    --secondary-color: #b0b3b8;
+    --border-color: #393a3b;
+
+    --hero-text-bg: rgba(18, 18, 18, 0.85);
+}
+
+/* =========================================
+   2. GLOBAL RESETS & UTILITIES
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden; 
+}
+
+/* Utility Classes */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-pad {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--bg-secondary);
+    transition: background-color 0.3s ease;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-main);
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease, opacity 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--text-main);
+    color: var(--text-main);
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+/* =========================================
+   3. NAVIGATION
+   ========================================= */
+header {
+    background-color: var(--nav-bg);
+    height: var(--nav-height);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav-right-side {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-main);
+    padding: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-cta {
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-main);
+    padding: 0 15px;
+    margin-right: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.theme-toggle:hover {
+    color: var(--primary-color);
+    transform: rotate(15deg);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--text-main);
+}
+
+/* =========================================
+   4. HERO SECTION (Moving Tech Grid + Code Window)
+   ========================================= */
+.hero {
+    min-height: 100vh; /* Changed to min-height for safety on mobile */
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-top: var(--nav-height);
+    
+    /* Base background color */
+    background-color: var(--bg-main);
+    
+    /* Hide the grid overflowing */
+    overflow: hidden; 
+    z-index: 1; 
+}
+
+/* The Animated Background Grid */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    
+    /* Grey grid lines */
+    background-image: 
+        linear-gradient(rgba(130, 130, 130, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(130, 130, 130, 0.15) 1px, transparent 1px);
+    
+    background-size: 50px 50px;
+    animation: gridMove 40s linear infinite;
+    z-index: -1; 
+}
+
+/* Subtle Vignette */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 40%, var(--bg-main) 100%);
+    z-index: -1;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* --- SPLIT LAYOUT STYLES (NEW) --- */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Equal split */
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+}
+
+/* Left Side: Text */
+.hero-text-bg {
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    max-width: 100%; /* Let the grid handle width */
+}
+
+.hero-buttons {
+    margin-top: 2rem;
+}
+
+/* Right Side: The Code Visual */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    perspective: 1000px; /* For 3D effect */
+}
+
+/* =========================================
+   HERO FLOATING ICONS
+   ========================================= */
+.hero-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* CRITICAL: Allows you to click buttons underneath the icons */
+    pointer-events: none; 
+    z-index: 0; /* Sits behind text (z-index 1) but above grid (z-index -1) */
+}
+
+.hero-icons i {
+    position: absolute;
+    color: var(--text-main);
+    opacity: 0.08; /* Very subtle watermark effect */
+    font-size: 4rem; /* Big icons */
+    animation: floatIcon 6s ease-in-out infinite;
+}
+
+/* --- Positioning & Delays --- 
+   Scattered around the edges so they frame your content 
+*/
+
+/* Top Left */
+.icon-1 { 
+    top: 15%; 
+    left: 10%; 
+    animation-delay: 0s; 
+    transform: rotate(-15deg);
+}
+
+/* Top Right */
+.icon-2 { 
+    top: 20%; 
+    right: 15%; 
+    animation-delay: 1.5s; 
+    transform: rotate(10deg);
+}
+
+/* Bottom Left */
+.icon-3 { 
+    bottom: 20%; 
+    left: 15%; 
+    animation-delay: 3s; 
+    font-size: 5rem;
+}
+
+/* Bottom Right */
+.icon-4 { 
+    bottom: 15%; 
+    right: 10%; 
+    animation-delay: 4.5s; 
+    transform: rotate(-10deg);
+}
+
+/* Top Middle-ish */
+.icon-5 { 
+    top: 10%; 
+    left: 50%; 
+    animation-delay: 2s; 
+    font-size: 3rem;
+}
+
+/* Bottom Middle-ish */
+.icon-6 { 
+    bottom: 10%; 
+    right: 40%; 
+    animation-delay: 1s; 
+    font-size: 3.5rem;
+}
+
+/* The Floating Animation */
+@keyframes floatIcon {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+/* Mobile: Hide some icons or make them smaller so it's not messy */
+@media screen and (max-width: 768px) {
+    .hero-icons i {
+        font-size: 3rem;
+        opacity: 0.05;
+    }
+    /* Hide the ones in the middle to save space */
+    .icon-5, .icon-6 { display: none; }
+}
+
+/* The Code Card Itself */
+.code-window {
+    background: #1e1e1e; /* Dark editor theme */
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 480px;
+    font-family: 'Courier New', monospace;
+    transform: rotateY(-10deg) rotateX(5deg); /* Slight 3D tilt */
+    transition: transform 0.3s ease;
+    border: 1px solid #333;
+}
+
+.code-window:hover {
+    transform: rotateY(0) rotateX(0); /* Flatten on hover */
+}
+
+/* Mac-style dots */
+.window-header {
+    background: #252526;
+    padding: 10px 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    gap: 8px;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+/* Code Text Styling */
+.window-body {
+    padding: 20px;
+    color: #d4d4d4;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+.code-line { white-space: nowrap; }
+.indent { margin-left: 20px; }
+.indent-2 { margin-left: 40px; }
+
+/* Syntax Highlighting Colors */
+.c-pink { color: #c586c0; }
+.c-blue { color: #9cdcfe; }
+.c-green { color: #ce9178; }
+.c-purple { color: #569cd6; }
+
+
+/* =========================================
+   5. ABOUT SECTION
+   ========================================= */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.about-text h3 {
+    color: var(--text-main);
+    margin-top: 2rem;
+}
+
+/* Profile Picture Styles */
+.about-image img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+}
+
+/* Skills List */
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    list-style: none;
+    margin-top: 1rem;
+    color: var(--text-muted);
+}
+
+.skills-list li {
+    position: relative;
+    padding-left: 20px;
+}
+
+.skills-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* =========================================
+   6. PROJECTS SECTION (3D Effect)
+   ========================================= */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem; 
+    perspective: 2000px; 
+    padding: 20px 0;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transform-style: preserve-3d;
+    transform: translateZ(0) rotateX(0);
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease, border-color 0.3s ease;
+    box-shadow: 0 10px 20px -10px var(--shadow-color);
+}
+
+.project-card:hover {
+    transform: translateZ(70px) rotateX(10deg);
+    box-shadow: 0 30px 60px -15px var(--shadow-color);
+    border-color: var(--primary-color);
+    z-index: 10;
+}
+
+.project-image-holder {
+    height: 220px;
+    width: 100%;
+    backface-visibility: hidden; 
+}
+.box-1 { background-image: linear-gradient(0deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); }
+.box-2 { background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); }
+.box-3 { background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%); }
+
+.project-content {
+    padding: 1.8rem;
+    transform: translateZ(20px); 
+    transform-style: preserve-3d;
+}
+
+.project-content h3 {
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.project-content p {
+    color: var(--text-muted);
+}
+
+.project-tech {
+    display: flex;
+    list-style: none;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    flex-wrap: wrap; 
+    gap: 10px;
+}
+
+.project-tech li {
+    padding: 4px 10px;
+    background-color: var(--bg-secondary);
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.project-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    margin-right: 20px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.project-links a i {
+    margin-right: 8px;
+}
+
+.project-links a:hover {
+    color: var(--primary-color);
+}
+
+/* =========================================
+   7. CONTACT & FOOTER
+   ========================================= */
+.contact-container {
+    text-align: center;
+    max-width: 600px;
+}
+
+.contact-container p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.big-btn {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+}
+
+.social-links {
+    margin-top: 3rem;
+}
+
+.social-links a {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--bg-darker);
+    color: var(--text-inverted);
+}
+
+/* =========================================
+   8. MEDIA QUERIES (Mobile Responsiveness)
+   ========================================= */
+@media screen and (max-width: 900px) {} /* Increased

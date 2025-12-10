@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio website of Christopher Allan Bautista - Web Developer">
+    <title>My Portfolio | [Your Name]</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+   <header>
+        <div class="container nav-container">
+            <a href="#home" class="logo">CAB<span>Portfolio</span>.</a>
+            
+            <div class="nav-right-side">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <nav>
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#projects" class="nav-link">Projects</a></li>
+                        <li><a href="#contact" class="nav-link nav-cta">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+             <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-icons">
+                    <i class="fab fa-html5 icon-1"></i>
+                    <i class="fab fa-css3-alt icon-2"></i>
+                    <i class="fab fa-js icon-3"></i>
+                    <i class="fab fa-python icon-4"></i>
+                    <i class="fab fa-laravel icon-5"></i>
+                    <i class="fab fa-github icon-6"></i>
+            </div>
+
+            <div class="container hero-content split-layout">
+                <div class="hero-text-bg">
+                    <h1>Hi, I'm <span class="highlight">Christopher Allan Bautista</span></h1>
+                    <h2>Full Stack Web Developer</h2>
+                    <p>Bridging the gap between complex backend logic and beautiful user interfaces.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="window-body">
+                            <div class="code-line"><span class="c-pink">const</span> <span class="c-blue">developer</span> = {</div>
+                            <div class="code-line indent">  name: <span class="c-green">'Christopher'</span>,</div>
+                            <div class="code-line indent">  skills: [<span class="c-green">'Laravel'</span>, <span class="c-green">'React'</span>, <span class="c-green">'Python'</span>],</div>
+                            <div class="code-line indent">  hardWorker: <span class="c-purple">true</span>,</div>
+                            <div class="code-line indent">  problemSolver: <span class="c-purple">true</span>,</div>
+                            <div class="code-line indent">  hireable: <span class="c-purple">function</span>() {</div>
+                            <div class="code-line indent-2">    <span class="c-pink">return</span> <span class="c-green">"Let's talk!"</span>;</div>
+                            <div class="code-line indent">  }</div>
+                            <div class="code-line">};</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-pad">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Hello! I'm a passionate developer based in Metro Manila, Philippines. I enjoy creating things that live on the internet. My interest in web development started when I saw a ecommerce website.</p>
+                        <p>Today, my main focus is building inclusive products and digital experiences across different devices.</p>
+                        
+                        <h3 style="margin-top: 2rem;">My Tech Stack</h3>
+                        <ul class="skills-list">
+                            <li>HTML5</li>
+                            <li>CSS3 (Flexbox/Grid)</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>Git & Github</li>
+                            <li>Responsive Design</li>
+                            <li>Python</li>
+                            <li>Laravel</li>
+                            <li>SQL</li>
+                            </ul>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://scontent.fmnl9-4.fna.fbcdn.net/v/t39.30808-6/223678585_10209225179622014_3368677614169845383_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEqw3ZtsgJLjGG8k89Q7lWHVwHyQtAe4tZXAfJC0B7i1ky_4-syEgftxzR4EbMDrWY&_nc_ohc=E8_O8dp6ThUQ7kNvwGTpsnH&_nc_oc=Adm7k2H9lTsJhwdFnzkUE2MFfD1njg1FemsDY-OZviqCZZds7eJc04o_dOCR1jWjnXk&_nc_zt=23&_nc_ht=scontent.fmnl9-4.fna&_nc_gid=u5gpcei92LCHZTFqZiMzlQ&oh=00_AflSxBrGKsbAGI1O0i1Wg_WpT9cQ420WgcMvMoxlf1DXew&oe=693AC0AC" 
+                            alt="Christopher Allan Bautista" 
+                            class="profile-pic">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-pad bg-light">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    
+                    <article class="project-card">
+                        <div class="project-image-holder box-1"></div>
+                        <div class="project-content">
+                            <h3>Project Name One</h3>
+                            <p>A brief description of the project. What problem did it solve? What technologies did you use?</p>
+                            <ul class="project-tech">
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>JS</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-image-holder box-2"></div>
+                        <div class="project-content">
+                            <h3>Project Name Two</h3>
+                            <p>Description of another cool project you built. Keep it concise and highlight key features.</p>
+                            <ul class="project-tech">
+                                <li>HTML</li>
+                                <li>SASS</li>
+                                <li>API</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                     <article class="project-card">
+                        <div class="project-image-holder box-3"></div>
+                        <div class="project-content">
+                            <h3>Project Name Three</h3>
+                            <p>Short description of your third project. Showcase variety in your skills here.</p>
+                            <ul class="project-tech">
+                                <li>HTML</li>
+                                <li>CSS Grid</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-pad">
+            <div class="container contact-container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p>I'm currently looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open!</p>
+                <a href="mailto:allan619@gmail.com" class="btn btn-primary big-btn">Say Hello</a>
+                
+                <div class="social-links">
+                    <a href="https://github.com/ChrisB619" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/christopher-allan-bautista-3523a354" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Designed & Built by Christopher Allan Bautsita| © 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
