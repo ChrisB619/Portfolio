@@ -59,4 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- SCROLL ANIMATIONS ---
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all sections and project cards
+    document.querySelectorAll('section, .project-card').forEach(el => {
+        el.classList.add('fade-in-element');
+        observer.observe(el);
+    });
 });
